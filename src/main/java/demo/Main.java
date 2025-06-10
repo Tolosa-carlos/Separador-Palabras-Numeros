@@ -1,6 +1,4 @@
 package demo;
-
-
 import java.util.*;
 
 /*
@@ -74,5 +72,32 @@ public class Main {
         System.out.println("-------------- Lista de palabras sin numeros por numero--------------");
         System.out.println(MapaPalabraPorNumero);
 
+        int contadorInicio = 0;
+        int contadorMedio = 0;
+        int contadorFInal = 0;
+        int total = 0;
+        for (String palabra : Listapalabras){
+            char cI = palabra.charAt(0);
+            int tam = palabra.length();
+            char cF = palabra.charAt(tam-1);
+            boolean numIncio = Character.isDigit(cI);
+            boolean numFinal = Character.isDigit(cF);
+
+            if (numIncio){
+                contadorInicio++;
+                total++;
+            } else if (numFinal){
+                contadorFInal++;
+                total++;
+            } else {
+                contadorMedio++;
+                total++;
+            }
+        }
+
+        System.out.println("Palabras que tienen un numero al inicio: " + contadorInicio);
+        System.out.println("Palabras que tienen un numero en el medio: " + contadorMedio);
+        System.out.println("Palabras que tienen un numero al final: " + contadorFInal);
+        System.out.println("Palabras totals: " + total);
     }
 }
