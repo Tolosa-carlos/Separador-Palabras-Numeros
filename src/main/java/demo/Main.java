@@ -47,6 +47,32 @@ public class Main {
         }
 
         System.out.println();
+        Map<String, List<String>> MapaPalabraPorNumero = new HashMap<>();
+        List<String> ListaPalabrasSinNumeros = new ArrayList<>();
+
+        for (String palabra : Listapalabras){
+
+            String numeroPalabra = "";
+            String palabraSinNumeros = "";
+            for (int i = 0; i < palabra.length(); i++){
+                if (palabra.charAt(i) >= 65 && palabra.charAt(i) <= 90 || palabra.charAt(i) >= 97 && palabra.charAt(i) <= 122 ){
+                    palabraSinNumeros += palabra.charAt(i);
+                } else {
+                    numeroPalabra += palabra.charAt(i);
+                }
+            }
+
+            ListaPalabrasSinNumeros.add(palabraSinNumeros);
+            MapaPalabraPorNumero.putIfAbsent(numeroPalabra, new ArrayList<>());
+            MapaPalabraPorNumero.get(numeroPalabra).add(palabraSinNumeros);
+        }
+
+        System.out.println("-------------- Lista de palabras sin numeros --------------");
+        System.out.println(ListaPalabrasSinNumeros);
+        System.out.println();
+
+        System.out.println("-------------- Lista de palabras sin numeros por numero--------------");
+        System.out.println(MapaPalabraPorNumero);
 
     }
 }
